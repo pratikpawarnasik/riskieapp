@@ -1,0 +1,82 @@
+<section class="product_detail_03 cust_margin">
+    <div class="container-fluid">
+        <div class="row prodduct_img_des">
+            <div class="col-md-3">
+                <img src="../assets/images/product_detail_03.jpg">
+            </div>
+            <div class="col-md-9">
+                <ul class="product_cat_disc">
+                    <li>{{productList.productname}}</li>
+                    <li>Category Name</li>
+                    <li><span>Product Number :</span> {{productList.productno}}</li>
+                    <li><span>RiskiE Product No :</span> product number here..</li>
+                    <li><span>Serial No. / Model No : </span> {{productList.modelno}}</li>
+                    <li><span>Lot Number : </span> Lot number here</li>
+                    <li><span>Risk Class : </span> {{productList.riskclass}}</li>
+                    <li><span>Product information last updated {{productList.modifydate}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="pro_desc">
+                    <li>
+                        <span>Product Description</span>
+                        <p>{{ productList.productdiscri}}</p>
+
+                    </li>
+                    <li>
+                        <span>Technical Facts:</span>
+                        <p>{{ productList.technicalfact}}</p>
+                        <!-- <ul>
+                            <li>Greater degree of taper</li>
+                            <li>7mm, 9mm, and 11mm lengths</li>
+                            <li>Enhanced surface</li>
+                            <li>Available in External Hex, Internal Hex Tri-Nex and Internal Octagon connections</li>
+                        </ul> -->
+                    </li>
+                    <li><span>Indications and Usage:</span><p>{{productList.indectionanduse}}</p></li>
+                    <li><span>Warnings/Risks:</span><p>{{productList.warnings}}</p></li>
+                    <li><span>Precautions:</span><p>{{productList.precautions}}</p></li>
+                    <li><span>Certificates:</span>
+                      <p>{{productList.certificates}}</p>
+                        <!-- <ul>
+                            <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                            <li>Letraset sheets containing Lorem Ipsum passages, and more recently </li>
+                            <li>with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</li>
+                        </ul> -->
+                    </li>
+                    <li>
+                       <span>FMEA Table:</span>
+                       <table class="product_table">
+                        <tr>
+                            <th>Function or component</th>
+                            <th>Failure mode</th>
+                            <th>Effect on system</th>
+                            <th>Possible Hazards</th>
+                            <th>Risk Index </th>
+                            <th>User detection means</th>
+                            <th>Applicable controls</th>
+                        </tr>
+                           <tr *ngFor="let fmea of productFMEA">
+                              <td>{{fmea.functionorcomp}}</td>
+                              <td>{{fmea.failuremode}}</td>
+                              <td>{{fmea.effectonsystem}}</td>
+                              <td>{{fmea.possiblehazrd}}</td>
+                              <td>{{fmea.riskindex}}</td>
+                              <td>{{fmea.userdetectmeans}}</td>
+                              <td>{{fmea.applicablecntrl}}</td>
+                            
+                           </tr>
+                        </table> 
+                        <p>1-5: Unacceptable, 6-9 Undesirable: Written and reviewed decision required to proceed, 10-16: Acceptable upon completion of quality assurance review, 17-above: Acceptable without review</p>
+                    </li>
+                    <li>
+                         <button class="cust_btn blue_btn"  (click)="backClicked()">Back to Product List</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</section>

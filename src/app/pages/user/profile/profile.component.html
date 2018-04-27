@@ -1,0 +1,125 @@
+<section class="cust_margin">	
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-2 profile_menu">
+        <ul>
+                    <li><a routerLink="/profile"><i class="fas fa-user"></i> &nbsp; My Profile</a></li>
+                    <li><a routerLink="/account"><i class="fas fa-home"></i>  &nbsp; My Account</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-md-8 profile_data">
+        <div class="profile_detail_form">
+          <h4>Personal Details</h4>
+          <form #frm="ngForm" (ngSubmit)="submitProfileUpdateForm(frm)" class="clearfix">
+            <div class="col-md-12 form-group">
+              <label>Profile Picture :</label>
+              
+              <input type="file" #profilePic accept="image/*" id="profilePic" (change)="uploadImg($event.target.files)">
+              <!-- <img [src]="imageUrl" class="user_pro_img"  alt="Profile Pic" style="height: 120; width: 120;">  -->
+            </div>
+            <div class="col-md-12 form-group">
+              <label>Profile Name :</label>
+              <input  
+                    type="text" 
+                    required 
+                    [(ngModel)]="profileDetail.fullName"
+                    name="fullName"
+                    #fullName="ngModel" 
+                    id="fullName" 
+                    class="profile_update"
+                    minlength="3"
+                    maxlength="100"
+                >
+            </div>
+            <div class="alert alert-danger"  *ngIf="fullName.touched && !fullName.valid">
+              <div *ngIf="fullName.errors.required">
+                  Full name is required.
+              </div>
+              <div *ngIf="fullName.errors.minlength">
+                  Full name length is minimum 3 characters.
+              </div>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <label>Email Address :</label>
+              <input type="email"
+                    required 
+                    [(ngModel)]="profileDetail.emailAddress"
+                    name="emailAddress"
+                    #emailAddress="ngModel" 
+                    id="emailAddress" 
+                    class="profile_update"
+                    pattern="[^ @]*@[^ @]*"
+                    maxlength="150"
+                > 
+            </div>
+            <div class="alert alert-danger"  *ngIf="emailAddress.touched && !emailAddress.valid">
+              <div *ngIf="emailAddress.errors.required">
+                  Email  is required.
+              </div>
+              <div *ngIf="emailAddress.errors.pattern">
+                  The email address must contain at least the @ character.
+              </div>
+            </div>
+
+            <div class="col-md-12 form-group">
+              <label>Contact Number :</label>
+              <input type="text" 
+                    required
+                    [(ngModel)]="profileDetail.mobileNo"
+                    name="mobileNo"
+                    #mobileNo="ngModel" 
+                    id="mobileNo" 
+                    class="profile_update"
+                    minlength="10"
+                    maxlength="15"
+                    pattern="[0-9.]+"
+                > 
+            </div>
+            <div class="alert alert-danger"  *ngIf="mobileNo.touched && !mobileNo.valid">
+              <div *ngIf="mobileNo.errors.required">
+                  Mobile number is required.
+              </div>       
+              <div *ngIf="mobileNo.errors.pattern">
+                  Please enter valid mobile number..
+              </div>          
+              <div *ngIf="mobileNo.errors.minlength">
+                  Mobile number must be 10 characters long.
+              </div>
+            </div>
+            <div class="col-md-12 button_section">
+                <button class="cust_btn blue_btn" [disabled]="frm.invalid">Update</button>	
+            </div>
+          </form>
+        </div>
+        <div class="manage_password_form">
+          <h4>Manage Password</h4>
+          <form class="clearfix">
+            <div class="col-md-12 form-group">
+              <label>Current Password : </label>
+              <input type="Password" name="profile_pic" id="profile_pic"> 
+            </div>
+            <div class="form-group col-md-6 manage_pass">
+              <label>New Password : </label>
+              <input type="Password" name="profile_pic" id="profile_pic"> 
+            </div>
+            <div class="form-group col-md-6 manage_pass">
+              <label>Repeat Password : </label>
+              <input type="Password" name="profile_pic" id="profile_pic"> 
+            </div>
+            <div class="col-md-12 button_section">	
+              <button class="cust_btn blue_btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-2 need_help">
+        <h4>Need Help ?</h4>
+        <ul>
+          <li><a>24/7 Email Support</a></li>
+          <li><a>Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+<section class="cust_margin">	
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-2 profile_menu">
+        <ul>
+          <li><a routerLink="/profile"><i class="fas fa-user"></i> &nbsp; My Profile</a></li>
+          <li><a routerLink="/account"><i class="fas fa-home"></i> &nbsp; My Account</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-md-8 profile_data">
+        <div class="profile_detail_form">
+          <h4>Current Plan</h4>
+          <div class="plans">
+            <label>{{currentPlan.plantype}}</label>
+            <label *ngIf="currentPlan.plantype == 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - Upto</label>
+            <label *ngIf="currentPlan.plantype !== 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}}</label>
+            <div>
+              <a href="#">View Invoice</a>
+              <button class="cust_btn orange_btn upgrade">UPGRADE</button>
+            </div>
+          </div>
+        </div>
+        <div class="manage_password_form">
+          <h4>Previous Plan</h4>
+          <div class="plans" *ngFor="let account of accountDetail">
+            <label>{{account.plantype}}</label>
+            <label *ngIf="account.plantype == 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - Upto</label>
+            <label *ngIf="account.plantype !== 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - {{currentPlan.enddate | date:'dd.MM.yyyy'}}</label>
+            <div>
+              <a href="#">View Invoice</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-2 need_help">
+        <h4>Need Help ?</h4>
+        <ul>
+          <li><a>24/7 Email Support</a></li>
+          <li><a>Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

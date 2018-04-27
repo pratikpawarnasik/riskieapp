@@ -1,0 +1,38 @@
+<section class="category cust_margin">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                <div class="col-md-12 no-padding">
+                    <div class="col-md-6 col-lg-6 text-left no-padding">
+                        <p class="keyword_cat">Category</p>
+                    </div>
+                    <div class="col-md-6 col-lg-6 text-right">
+                        <p class="back_search"><a routerLink="/search-product" class="link_color">Back to Search</a></p>
+                    </div>
+                </div>
+                <div class="col-md-12 white_box" *ngFor="let product of productList">
+                    <div class="cat_box">
+                        <div class="col-md-2 border_line">
+                            <img src="../assets/images/product_detail_03.jpg" height="200px" width="150px">
+                        </div>
+                        <div class="col-md-10 cat_box1">
+                            <h4>{{product.productname}}</h4>
+                            <ul class="category_inline">
+                                <li>{{product.productno}}</li>
+                                <li><i class="fas fa-circle fa_cust_circle"></i></li>
+                                <li>{{product.productname}}Category1</li>
+                                <li><i class="fas fa-circle fa_cust_circle"></i></li>
+                                <li>{{product.riskclass}}</li>
+                            </ul>
+                            <p>Lorem Ipsum is simply dummy text of the printing and ypesetting industry.ting and typesetting industry.</p>
+                            <a [routerLink]="['/product-detail', product.pid]" class="link_color">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+    </div>
+</section>

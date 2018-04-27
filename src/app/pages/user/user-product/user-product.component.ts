@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
+import { HttpClient, HttpParams, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import 'rxjs/add/operator/catch';
+
+import { UserApiService } from '../user.api';
+// Component data
+@Component({
+  selector: 'app-user-product',
+  templateUrl: './user-product.component.html'
+})
+// Product Search Componenet Class
+export class UserProductComponent implements OnInit {
+    userId = this.cookieService.get('userId');
+    userName = this.cookieService.get('userName');
+    getproductList: any;
+    productList = {};
+    private sub: any;
+    categoryId: number;
+
+  constructor(private router: Router,
+              private cookieService: CookieService,
+              private userSerivce: UserApiService,
+              private route: ActivatedRoute ) {} // Constructor end here
+
+  ngOnInit() {
+    if (this.userId < '0' &&  this.userId === '') {
+      this.router.navigate(['home']);
+    }
+
+    this.sub = this.route.params.subscribe(params => {
+      this.categoryId = +params['categoryId']; // (+) converts string 'id' to a number
+    });
+
+
+    // Login API
+    this.userSerivce.url_getProductByCategoryAPI(this.userId, this.categoryId)
+   // .map(response => response.json())
+    .subscribe(
+      response => {this.getproductList = response;
+        if (this.getproductList.status === 200) {
+          this.productList = this.getproductList.catprodlist;
+          console.log(this.productList);
+        } else {
+          alert(this.getproductList.message);
+        }
+      },
+      error => console.log('Error :: ' + error ));
+
+
+  }
+
+} // Product Search Componenet Class end here
+

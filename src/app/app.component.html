@@ -1,0 +1,6 @@
+<div id="fullpage">
+    <app-header  *ngIf="!headerStatus"></app-header>
+    <app-master-header  *ngIf="headerStatus"></app-master-header>
+    <router-outlet></router-outlet>
+    <!-- <app-welcome></app-welcome> -->
+</div>
