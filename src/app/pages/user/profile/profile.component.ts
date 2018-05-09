@@ -3,7 +3,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
-import { UserApiService } from '../user.api';
+import { AppGlobals } from '../../../config-pages/app.global';
+
+import { UserApiService } from '../../../config-pages/user.api.service';
 
 // Component data
 @Component({
@@ -13,11 +15,12 @@ import { UserApiService } from '../user.api';
 
 // Product Search Componenet Class
 export class ProfileComponent implements OnInit {
-  userId = this.cookieService.get('userId');
-  userName = this.cookieService.get('userName');
+
+  // userName = this.cookieService.get('userName');
   getProfileDetail: any;
   // profileDetail = {};
   updateResponse: any;
+  passUpdateResponse: any;
   profileDetail = {
     fullName: '',
     emailAddress: '',
@@ -26,16 +29,28 @@ export class ProfileComponent implements OnInit {
     userPackageType: '',
     userProfilePic: ''
   };
-  imageUrl = '../assets/images/user_profile.png';
+  manPass = {
+    curPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  };
+  imageUrl = 'assets/images/user_profile.png';
   fileToUpload: File = null;
-  constructor(private router: Router, private cookieService: CookieService, private userSerivce: UserApiService ) {} // Constructor end here
+  httpOptions: any;
+  constructor(private router: Router, private cookieService: CookieService, private userSerivce: UserApiService, private _global: AppGlobals ) {} // Constructor end here
 
   ngOnInit() {
-    if (this.userId < '0' &&  this.userId === '') {
+    if (this._global.g_userId < '0' &&  this._global.g_userId === '') {
       this.router.navigate(['home']);
     }
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'my-auth-token'
+      })
+    };
     // Login API
-    this.userSerivce.url_getProfileDetailAPI(this.userId)
+    this.userSerivce.url_getProfileDetailAPI(this._global.g_userId)
    // .map(response => response.json())
     .subscribe(
       response => {this.getProfileDetail = response;
@@ -69,14 +84,14 @@ export class ProfileComponent implements OnInit {
   }
   // Profile Update form submit
   submitProfileUpdateForm(frm) {
-    console.log(this.fileToUpload);
+   // console.log(this.fileToUpload);
     const formData: FormData = new FormData();
         formData.append('emailaddress', this.profileDetail.emailAddress);
         formData.append('fullname', this.profileDetail.fullName);
         formData.append('mobileno', this.profileDetail.mobileNo);
         formData.append('profpic', this.fileToUpload);
-        formData.append('userid', this.userId);
-
+        formData.append('userid', this._global.g_userId);
+        console.log(formData);
       this.userSerivce.url_updateProfileDetailAPI(formData).
       // .map(response => response.json())
         subscribe(
@@ -93,7 +108,29 @@ export class ProfileComponent implements OnInit {
               }
             },
             error => console.log('Error :: ' + error ));
-            console.log(formData);
   }
-
+  log(x) {
+    console.log(x);
+  }
+  submitPasswordUpdateForm(asdf) {
+    const formData: FormData = new FormData();
+        formData.append('curentpass', this.manPass.curPassword);
+        formData.append('newpass', this.manPass.newPassword);
+        formData.append('userid', this._global.g_userId);
+        this.httpOptions.headers =
+        this.httpOptions.headers.set('Authorization', 'my-new-auth-token');
+      this.userSerivce.url_changePasswordAPI(formData, this.httpOptions).
+      // .map(response => response.json())
+        subscribe(
+            resultArray => {this.passUpdateResponse = resultArray;
+              if (this.passUpdateResponse.status === 200) {
+                console.log(this.passUpdateResponse);
+                // this.router.navigate(['welcome']);
+                window.location.reload();
+              } else {
+                alert(this.passUpdateResponse.message);
+              }
+            },
+            error => console.log('Error :: ' + error ));
+  }
 } // Product Search Componenet Class end here

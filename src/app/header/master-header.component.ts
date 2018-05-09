@@ -8,11 +8,13 @@ import { AppGlobals } from '../config-pages/app.global';
   templateUrl: './master-header.component.html'
 })
 export class MasterHeaderComponent implements OnInit {
-  userId = this.cookieService.get('userId');
-  userName = this.cookieService.get('userName');
+
+
   userProfilePath = this.cookieService.get('profilePic');
-  profileFullPath = '../assets/images/user_profile.png';
+  isSuperAdmin = this.cookieService.get('profilePic');
+  profileFullPath = 'assets/images/user_profile.png';
  // profilePic = this.cookieService.get('profilePic');
+  userName = this._global.g_userName;
 
   constructor( private router: Router, private cookieService: CookieService, private _global: AppGlobals ) { }
   logoutBtn() {
@@ -22,13 +24,14 @@ export class MasterHeaderComponent implements OnInit {
     this.cookieService.delete('isAdmin');
     this.cookieService.delete('userName');
     // this.router.navigate(['home']);
-    // this.cookieService.deleteAll();
+     this.cookieService.deleteAll();
     window.location.reload();
   }
+
   ngOnInit() {
-    // if (this.userProfilePath !== null ) {
-    //   this.profileFullPath = this._global.profileFolderPathUrl + this.userProfilePath;
-    // }
+    if (this.userProfilePath !== 'null' ) {
+      this.profileFullPath = this._global.profileFolderPathUrl + this.userProfilePath;
+    }
   }
 
 }

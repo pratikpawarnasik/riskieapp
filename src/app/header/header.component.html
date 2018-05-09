@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <ul class="social">
             <li>
-                <a href="mailto:Contact@riskie.com">Contact@riskie.com</a>
+                <a href="mailto:Contact@riskie.com">contact@riskie.com</a>
             </li>
             <li class="icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -23,20 +23,21 @@
                     <span class="icon-bar"></span>                        
                 </button>
                 <a class="col-xs- 6 navbar-brand" routerLink="/home">
-                    <img src="../assets/images/logo.png" alt="Logo">
+                    <img src="assets/images/logo.png" alt="Logo">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right r_homenav">
                     <li class="active"><a routerLink="/home" routerLinkActive="active">HOME</a></li>
-                    <li><a routerLink="/products">PRODUCT</a></li>
-                    <li><a routerLink="/solution">SOLUTION</a></li>
-                    <li><a routerLink="/customer">CUSTOMER</a></li>
+                    <li><a routerLink="/products">PRODUCTS</a></li>
+                    <li><a routerLink="/solution">SOLUTIONS</a></li>
+                    <li><a routerLink="/customer">CUSTOMERS</a></li>
                     <li><a routerLink="/aboutus">ABOUT US</a></li>
                     <li><a routerLink="/contactus">CONTACT US</a></li>
                     <li><a routerLink="/tools">TOOLS</a></li>
-                    <li><a data-toggle="modal" data-target="" (click)="openLoginForm(login)">LOGIN</a></li>
-                    <li><a data-toggle="modal" data-target="" (click)="openRegForm(registration)">SIGN UP</a></li>
+                    <li *ngIf="!userId"><a data-toggle="modal" data-target="" (click)="openLoginForm(login)">LOGIN</a></li>
+                    <li *ngIf="!userId"><a data-toggle="modal" data-target="" (click)="openRegForm(registration)">SIGN UP</a></li>
+                    <li *ngIf="userId"><a routerLink="/welcome">LOGIN ACCESSIBILITY</a></li>
                 </ul>
             </div>
         </nav>
@@ -53,7 +54,7 @@
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body cust_modalbody">
         
             <div class="form-group">
                 <input  
@@ -156,8 +157,8 @@
             </div>
     <!-- </div>
     <div class="modal-footer"> -->
-            <button class="btn btn-primary risksubmit_button" [disabled]="frm.invalid">Submit</button>
-            <p class="reg_sign_in">Go to back? <a data-toggle="modal" data-target="" (click)="openLoginForm(login)">LOGIN</a></p>
+            <button class="btn btn-primary risksubmit_button" [disabled]="frm.invalid">Register</button>
+            <p class="reg_sign_in">Already have an account? <a data-toggle="modal" data-target="" (click)="openLoginForm(login)">LOGIN</a></p>
     </div>
     </form>   
     </ng-template>
@@ -170,7 +171,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body cust_modalbody">
             <div class="form-group">
                 <!-- <label for="emailAddress">
                     Email Address / User Id.
@@ -191,7 +192,7 @@
                         Email  is required.
                     </div>
                     <div *ngIf="emailAddress.errors.pattern">
-                        The email address must contain at least the @ character.
+                        Please enter valid Email address.
                     </div>
                 </div>
             </div>
@@ -221,7 +222,7 @@
         <!-- </div>
         <div class="modal-footer"> -->
                 <button class="btn btn-primary risksubmit_button" [disabled]="ngLoginForm.invalid">Login</button>
-                <p class="reg_sign_in">Go to back? <a data-toggle="modal" data-target="" (click)="openRegForm(registration)">SIGN UP</a></p>
+                <p class="reg_sign_in pull-right">Don't have an account? <a data-toggle="modal" data-target="" (click)="openRegForm(registration)">SIGN UP</a></p>
         </div>
         </form>
     </ng-template>

@@ -3,8 +3,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
+import { AppGlobals } from '../../../config-pages/app.global';
+import { UserApiService } from '../../../config-pages/user.api.service';
+import {Location} from '@angular/common';
 
-import { UserApiService } from '../user.api';
 // Component data
 @Component({
   selector: 'app-user-product-search',
@@ -12,18 +14,18 @@ import { UserApiService } from '../user.api';
 })
 // Product Search Componenet Class
 export class UserProductSearchComponent implements OnInit {
-  userId = this.cookieService.get('userId');
-  userName = this.cookieService.get('userName');
+ // userId = this.cookieService.get('userId');
+ // userName = this.cookieService.get('userName');
   getCategoryList: any;
-  categoryList = {};
-  constructor(private router: Router, private cookieService: CookieService, private userSerivce: UserApiService ) {} // Constructor end here
+  categoryList: any;
+  constructor(private router: Router, private _location: Location, private cookieService: CookieService, private userSerivce: UserApiService, private _global: AppGlobals ) {} // Constructor end here
 
   ngOnInit() {
-    if (this.userId < '0' &&  this.userId === '') {
+    if (this._global.g_userId < '0' &&  this._global.g_userId === '') {
       this.router.navigate(['home']);
     }
     // Login API
-    this.userSerivce.url_getCategoryAPI(this.userId)
+    this.userSerivce.url_getCategoryAPI()
    // .map(response => response.json())
     .subscribe(
       response => {this.getCategoryList = response;
@@ -32,6 +34,7 @@ export class UserProductSearchComponent implements OnInit {
           console.log(this.getCategoryList.catdata);
         } else {
           alert(this.getCategoryList.message);
+          this._location.back();
         }
       },
       error => console.log('Error :: ' + error ));

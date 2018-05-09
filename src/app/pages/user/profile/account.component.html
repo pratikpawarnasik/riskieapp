@@ -1,3 +1,4 @@
+<app-master-header></app-master-header>
 <section class="cust_margin">	
   <div class="container-fluid">
     <div class="row">
@@ -12,20 +13,19 @@
           <h4>Current Plan</h4>
           <div class="plans">
             <label>{{currentPlan.plantype}}</label>
-            <label *ngIf="currentPlan.plantype == 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - Upto</label>
-            <label *ngIf="currentPlan.plantype !== 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}}</label>
+            <label *ngIf="currentPlan.plantype == 'Free User'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - Upto</label>
+            <label *ngIf="currentPlan.plantype !== 'Free User'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}}</label>
             <div>
               <a href="#">View Invoice</a>
-              <button class="cust_btn orange_btn upgrade">UPGRADE</button>
+              <button class="cust_btn orange_btn upgrade"><a routerLink="/plans">UPGRADE</a></button>
             </div>
           </div>
         </div>
         <div class="manage_password_form">
           <h4>Previous Plan</h4>
           <div class="plans" *ngFor="let account of accountDetail">
-            <label>{{account.plantype}}</label>
-            <label *ngIf="account.plantype == 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - Upto</label>
-            <label *ngIf="account.plantype !== 'free user'">{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - {{currentPlan.enddate | date:'dd.MM.yyyy'}}</label>
+            <label >{{account.plantype}}</label>
+            <label >{{currentPlan.submitdate | date:'dd.MM.yyyy'}} - {{currentPlan.enddate | date:'dd.MM.yyyy'}}</label>
             <div>
               <a href="#">View Invoice</a>
             </div>

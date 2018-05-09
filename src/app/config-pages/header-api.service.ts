@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {TestinServiceData, UserRegistration} from './config-pages/riskie-all-interface';
-import { AppGlobals } from './config-pages/app.global';
+import {TestinServiceData, UserRegistration} from './riskie-all-interface';
+import { AppGlobals } from './app.global';
 
 @Injectable()
 export class ApiService {
@@ -51,7 +51,6 @@ export class ApiService {
   //   })
   //   .catch(this.handleError);
   // }
-
 
 
 }

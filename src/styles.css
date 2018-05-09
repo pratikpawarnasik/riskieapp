@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -173,7 +174,7 @@ body{
 	}
 	.upgrade{
 		font-size: 16px!important;
-		padding: 15px 25px;
+		padding: 10px 25px;
 	}
 /* ================================================ header ================================================ */
 .black_header .navbar{
@@ -188,6 +189,7 @@ body{
 	height: unset;
 }
 .black_header .navbar-nav > li > a {
+	cursor: pointer;
 	color:#fff;
 	padding: 12px 5px;
 	font-size: 16px;
@@ -198,7 +200,7 @@ body{
 }
 .black_header .navbar-nav > li {
 	float: left;
-	margin: 30px 14px;
+	margin: 25px 14px;
 }
 .black_header .user_login span{
 	vertical-align: middle;
@@ -206,7 +208,7 @@ body{
 	margin: 0px 7px;
 }
 .black_header .navbar-right li:last-child{
-	margin: 10px 14px;
+	margin: 5px 14px;
 }
 .black_header {
 	background-color: #333333;
@@ -215,6 +217,20 @@ body{
 	width: 100%;
 	top: 0px;
 	z-index: 1024;
+}
+.r_homenav li a{
+	cursor: pointer;
+}
+.cust_modalbody{
+	padding: 35px 25px !important;	
+}
+.modal-header .close {
+    color: #fff;
+    font-size: 35px !important;
+}
+input:focus {
+	outline: none !important;
+	box-shadow: none !important;
 }
 /* ------------ End header ------------ */
 /* Header */
@@ -366,6 +382,7 @@ footer h6{
 	font-size: 16px;
 	font-weight:600;
 	margin-bottom: 20px;
+	text-transform: uppercase;
 }
 footer a,.welcome_section p{
 	color: #fff;
@@ -1002,6 +1019,13 @@ footer li {
 	background:transparent !important;
 	border: none !important;
 }
+.blue_btn a{
+	color:#fff;
+}
+.blue_btn a:hover{
+	color: #fff;
+	border: none;
+}
 
 /*---------------search result page---------------*/
 .white_box{
@@ -1031,6 +1055,7 @@ footer li {
 .cust_margin{
 	margin-top: 150px;
 }
+
 .keyword_cat{
     background: #e9e9e9;
     padding: 10px;
@@ -1079,6 +1104,7 @@ footer li {
 }
 .product_table{
 	border:1px solid #ccc;
+	width: 100%;
 }
 .product_table tbody th {
     border: 1px solid #ccc;
@@ -1102,7 +1128,10 @@ footer li {
 		padding: 5px 20px;
 	}
 	.logout_popover p {
-		line-height: 40px;
+		line-height: 25px;
+	}
+	.dropdown-menu.logout_popover p {
+		line-height: 35px;
 	}
 	.header_right_nav li {
 		display: inline;
@@ -1111,8 +1140,11 @@ footer li {
 		margin-right: 65px;
 		vertical-align: middle;
 		position: relative;
-		top: 10px;
+		top: 5px;
 		left: 0px;
+	}
+	.cust_btn.gray_btn a {
+		color: #333;
 	}
 	.upgrade_button {
 		background: #ff6600;
@@ -1130,3 +1162,273 @@ footer li {
 		background-color: #fff;
 		margin-bottom: 20px;
 	}
+	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+		background-color: transparent;
+		border-color: #337ab7;
+	}
+	span.user_pro_img img {
+		border-radius: 100px;
+	}
+	.riskie-note{
+		font-size: 12px;
+		color: #666;
+	}
+	.dropdown-menu.logout_popover a {
+		cursor: pointer;
+		color: #333;
+	}
+	.dropdown-menu.logout_popover a:hover{
+		border-bottom: none !important;
+	}
+	.link_color{
+		color: #337ab7 !important;
+	}
+	.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+		background: transparent !important;
+	}
+	.dropdown-menu.logout_popover {
+		padding: 15px !important;
+	}
+	/* Laptop media queries */
+	@media only screen and (min-width : 1224px){
+
+	}
+
+	/*Trying Plans*/
+
+	.tryplan_box {
+		background: #fff;
+		height: 955px;
+		margin-top: 80px;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+	.heading_plans p {
+		font-size: 16px;
+		font-weight: 600;
+		color: #333;
+	}
+	.heading_plans {
+		text-align: center;
+		padding-top: 30px;
+	}
+	.tryplan_box ul li {
+		padding: 0px 13px 30px 30px;
+		text-align: left;
+	}
+	.tryplan_box ul {
+		height: 738px;
+		padding-top: 45px;
+	}
+	.cust_btn a {
+		color: #fff;
+	}
+	/*admin style*/
+	.product_category{
+		background:url("assets/images/admin-background.jpg") no-repeat center center fixed; 
+		 -webkit-background-size: cover;
+		 -moz-background-size: cover;
+		 -o-background-size: cover;
+		 background-size: cover;
+		 height: 100vh;
+	   }
+	   .admin_whitebgcolor{
+	   background: #f1f5f8;
+	   height: 93vh;
+	   position: relative;
+	   top: 40px;
+	   left: 0px;
+	   margin-left: 40px;
+	   margin-right: 40px;
+	   padding: 0px !important;
+   
+	   }	
+	   .sidenav {
+	   height: 100%;
+	   width: 100%;
+	   z-index: 1;
+	   background-color: #111;
+	   overflow-x: hidden;
+	   padding-top: 20px;
+	   }
+	   .admin_sidenav li a{
+	   color: #fff;
+	   padding: 10px 125px 10px 24px;
+	   }
+	   .admin_sidenav li {
+	   color: #fff;
+	   padding: 10px;
+	   width: 100%;
+	   height: 50px;
+	   }
+	   .no-padd{
+		   padding: 0px;
+	   }
+	   .side_blacknav{
+		   height: 100%;
+	   }
+	   .main h3,.btn_addproduct{
+			   margin: 20px;
+	   }
+	   .main .btn_addproduct{
+		   padding: 12px 20px;
+		   background:#666;
+		   border-radius: 4px;
+		   color: #fff;
+		   border: none;	
+	   }
+	   .ad_pdetail .nav-tabs>li.active>a{
+		   background:#ececec;
+		   padding: 30px 5px 30px 5px;
+	   }
+	   .nav-tabs>li>a {
+	   padding: 30px 5px 30px 5px;
+	   background: #dddddd;
+	   margin: 0px;
+	   color: #333;
+	   border-radius: 0px;
+	   font-size: 13px;
+	   }
+	   .nav-tabs>li>a:hover{
+		   background: #ececec;
+	   }
+	   .riskieproduct_admin ul li {
+	   width: 14.2%;
+	   text-align: center;
+	   }
+	   .riskieproduct_admin{
+		   width: 95%;
+		   margin:0px auto;
+		   background-color: #fff;
+		   padding: 10px;
+	   }
+	   .prod_add_admin input{
+		   width: 100%;
+		   height: 45px;
+		   margin-bottom: 30px;
+		   background: transparent;
+		   border: 1px solid #ccc;
+	   }
+	   .prod_add_admin label {
+	   padding-bottom: 8px;
+	   font-size: 14px;
+	   }
+	   .riskieproduct_admin ul{
+		   border-bottom:none; 
+	   }
+	   @media only screen and (min-width : 1224px){
+		   .riskieproduct_admin{
+		   width: 100%;
+		   margin:0px auto;
+		   background-color: #fff;
+		   padding: 10px;
+		   }
+		   .admin_sidenav li a {
+			   color: #fff;
+			padding: 10px 70px 10px 11px;
+		   }
+	   }
+
+	   /* table Css */
+	   .category_table table tbody {
+		width: 100%;
+	}
+	.category_table table tbody tr th{
+		width: 31%;
+		height: 50px;
+		padding: 10px;
+		background: #e4e4e4;
+	}
+	.category_table table tbody tr td {
+		width: 31%;
+		padding: 10px;
+		background: #f2f2f2;
+	}
+	.add_cat_button {
+		width: 180px;
+		height: 50px;
+		background: #4ba6dd !important;
+		color: #fff;
+		border: none;
+		border-radius: 2px !important;
+		margin-top: 40px;
+		margin-bottom: 20px !important;
+		margin-right: 10px;
+	}
+	.add_cat_button a {
+		color: #fbfbfb;
+	}
+	.back_button {
+		width: 180px;
+		height: 50px;
+		background: #c4c1c1 !important;
+		color: #fff;
+		border: none;
+		border-radius: 2px !important;
+		margin-top: 40px;
+		margin-bottom: 20px !important;
+	}
+	.heading_name {
+		padding-top: 17px;
+	}
+
+	/* Data Table Css */
+	.example-container {
+		display: flex;
+		flex-direction: column;
+		min-width: 300px;
+	  }
+	  
+	  .mat-table {
+		overflow: auto;
+		max-height: 500px;
+	  }
+	  .mat-form-field {
+		font-size: 14px;
+		width: 100%;
+	  }
+	  .example-header {
+		min-height: 64px;
+		padding: 8px 24px 0;
+	  }
+	  .mat-input-element {
+		font: inherit;
+		background: 0 0;
+		color: currentColor;
+		border: none;
+		outline: 0;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+		max-width: 100%;
+		vertical-align: bottom;
+		text-align: inherit;
+	}
+	.mat-header-row{
+		background-color: #cacaca
+	}
+	.sidebar_heading {
+		font-size: 26px;
+		color: #4ba6dd;
+		padding-left: 17px;
+		padding-bottom: 12px;
+		size: 19px;
+	}
+	.order_data{
+		padding: 15px 0px;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	.order_data select{
+		/* border:none;
+		background-color: #e0e0e0; */
+	}
+	.order_data select, .order_data select option{
+		display: block;
+		width: 100%;
+	}
+	.order_data select option{
+		background-color: #fff;
+	}
+	.cdk-global-overlay-wrapper, .cdk-overlay-container {
+		z-index: 99999 !important;
+	  }

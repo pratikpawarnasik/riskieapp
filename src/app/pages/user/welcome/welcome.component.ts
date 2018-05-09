@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { AppGlobals } from '../../../config-pages/app.global';
 
 // Component data
 @Component({
@@ -10,12 +11,11 @@ import { RouterModule, Routes, Router } from '@angular/router';
 })
 // Welcome Componenet Class
 export class WelcomeComponent implements OnInit {
-  userId = this.cookieService.get('userId');
-  userName = this.cookieService.get('userName');
-  constructor(private router: Router, private cookieService: CookieService) {} // Constructor end here
+  userName = this._global.g_userName;
+  constructor(private router: Router, private cookieService: CookieService, private _global: AppGlobals) {} // Constructor end here
 
   ngOnInit() {
-    if (this.userId < '0' &&  this.userId === '') {
+    if (this._global.g_userId < '0' &&  this._global.g_userId === '') {
       this.router.navigate(['home']);
     }
   }

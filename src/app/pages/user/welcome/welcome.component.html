@@ -1,18 +1,20 @@
+<app-master-header></app-master-header>
 <!-- / welcome -->
 <section class="user_welcome">	
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12 col-sm-5 col-md-5 text-center user_data">
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <img class="img-responsive" src="../assets/images/user_data.png">
+          <img class="img-responsive" src="assets/images/user_data.png">
         </div>
         <div class="col-xs-12 col-sm-7 col-md-7 user_info">
-          <h1>Welcome {{userName}}</h1>
+          <h1>Welcome {{userName}},</h1>
           <h2>Currently you are a free member</h2>
           <p>By signing up to our service, we give you access to a wealth of Health and Safety Risk Information. You can search by product for yourself, your family or friends. Also, you can help others by telling us your experience of a product, medical device, pharmaceutical medicines or perhaps a diagnostic test result and the impact it had on you.We can log this information for you anonymously, so that others can benefit from your experience and help reduce risks by making them known.We charge a minimal administration fee for this service. Alternatively, see our Expert or Enterprise User Access for more advanced Health & Safety Tools and Risk Management Solutions.</p>
           <div class="button_section">	
-            <button class="cust_btn blue_btn">Pay Now</button>
-            <button class="cust_btn gray_btn">Continue Free</button>
+              <button class="cust_btn blue_btn"><a routerLink="/plans">Pay Now </a></button>
+            <button class="cust_btn gray_btn"><a routerLink="/search-product">Continue Free</a></button>
+            
           </div>
         </div>
       </div>

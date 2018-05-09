@@ -1,0 +1,162 @@
+<app-master-header></app-master-header>
+<section class="try_edition cust_margin">
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+               <h3 class="text-center"><strong>Try Other Editions</strong></h3>
+            </div>
+         </div> 
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                <div class="tryplan_box">
+                    <div class="heading_plans">
+                        <p>TRY FOR FREE</p>
+                        <p>(0.00 Euro)</p>
+                    </div>
+                    <ul>
+                        <li>Register User</li>
+                        <li>Full List of Medical Devices</li>
+                        <li>Submit Product Comment / Incident Card</li>
+                        <li>See Example List of Potential harms * 3</li>
+
+                    </ul>
+                    <div class="plans_footer">
+                        <!-- <button class="cust_btn blue_btn" disabled>Free Trial</button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                <div class="tryplan_box">
+                    <div class="heading_plans">
+                        <p>{{plan[0].planName}}</p>
+                        <p>({{plan[0].amt}} Euro/ month)</p>
+                    </div>
+                    <ul>
+                        <li>Register User</li>
+                        <li>Full List of Medical Devices</li>
+                        <li>Submit Product Comment / Incident Card</li>
+                        <li>See Example List of Potential harms * 3</li>
+                        <li>See limited list of  real potential harms</li>
+                    </ul>
+                    <div class="plans_footer">
+                        <button class="cust_btn blue_btn" (click)="planPurchase(0,billingOrder)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                <div class="tryplan_box">
+                    <div class="heading_plans">
+                        <p>{{plan[1].planName}}</p>
+                        <p>({{plan[1].amt}} Euro/ month)</p>
+                    </div>
+                    <ul>
+                        <li>Register User</li>
+                        <li>Full List of Medical Devices</li>
+                        <li>Submit Product Comment / Incident Card</li>
+                        <li>See Example List of Potential harms * 3</li>
+                        <li>See limited list of  real potential harms</li>
+                        <li>See full list of potential harms</li>
+                        <li>See severity rating for harms</li>
+                        <li>See occurrence ratings (real time)</li>
+
+                    </ul>
+                    <div class="plans_footer">
+                        <button class="cust_btn blue_btn" (click)="planPurchase(1,billingOrder)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+                <div class="tryplan_box">
+                    <div class="heading_plans">
+                        <p>{{plan[2].planName}}</p>
+                        <p>({{plan[2].amt}} Euro/ month)</p>
+                    </div>
+                    <ul>
+                        <li>Register User</li>
+                        <li>Full List of Medical Devices</li>
+                        <li>Submit Product Comment / Incident Card</li>
+                        <li>See Example List of Potential harms * 3</li>
+                        <li>See limited list of  real potential harms</li>
+                        <li>See full list of potential harms</li>
+                        <li>See severity rating for harms</li>
+                        <li>See occurrence ratings (real time)</li>
+                        <li>Find Process Risks</li>
+                        <li>Find Misuse Risks</li>
+                        <li>Find Use Risks(Application Risks)</li>
+                        <li>Get real-time risk updates through system or email notification of new risks identified (state of the art) Collaborate across your company</li>
+                        <li>Access to complete Risk Management Reporting Tools (e.g. FMEA and more)</li>
+
+                    </ul>
+                    <div class="plans_footer">
+                        <button class="cust_btn blue_btn" (click)="planPurchase(planPurchase(2,billingOrder))">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #billingOrder let-c="close" let-d="dismiss">
+        <form #ngBillingForm="ngForm" (ngSubmit)="submitBillingForm(ngBillingForm)" class="riskie_input">
+        <div class="modal-header">
+            <h4 class="modal-title">Review Order Summary</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body cust_modalbody">
+            <div class="row order_data">
+                <div class="col-xs-8"><strong> {{orderSummary.planName}}</strong></div>
+                <div class="col-xs-4">{{orderSummary.planRate | currency:'EUR':true:'1.2-2'}}</div>
+            </div>
+            <div class="row order_data">
+                    <div class="col-xs-8">Month</div>
+                    <div class="col-xs-4">
+                            <mat-form-field>
+                                    <mat-select placeholder="Selected month" name="month" id="month" #t (change)="selctMonth(selected)" 
+                                                [(value)]="selected" [(ngModel)]='orderSummary.month'>
+                                            <mat-option [value]="1">1 month</mat-option>
+                                            <mat-option [value]="2">2 months</mat-option>
+                                            <mat-option [value]="3">3 months</mat-option>
+                                            <mat-option [value]="4">4 months</mat-option>
+                                            <mat-option [value]="5">5 months</mat-option>
+                                            <mat-option [value]="6">6 months</mat-option>
+                                            <mat-option [value]="7">7 months</mat-option>
+                                            <mat-option [value]="8">8 months</mat-option>
+                                            <mat-option [value]="9">9 months</mat-option>
+                                            <mat-option [value]="10">10 months</mat-option>
+                                            <mat-option [value]="11">11 months</mat-option>
+                                            <mat-option [value]="12">12 months</mat-option>
+                                     
+                                    </mat-select>
+                                  </mat-form-field>
+                        <!-- <select name="month" id="month"  >
+                            <option [value]="1">1 month</option>
+                            <option [value]="2">2 months</option>
+                            <option [value]="3">3 months</option>
+                            <option [value]="4">4 months</option>
+                            <option [value]="5">5 months</option>
+                            <option [value]="6">6 months</option>
+                            <option [value]="7">7 months</option>
+                            <option [value]="8">8 months</option>
+                            <option [value]="9">9 months</option>
+                            <option [value]="10">10 months</option>
+                            <option [value]="11">11 months</option>
+                            <option [value]="12">12 months</option>
+                            
+                        </select> -->
+                    </div>
+                    
+            </div>
+             <div class="row order_data">
+                <div class="col-xs-8">Total</div>
+                <div class="col-xs-4">{{orderSummary.orderAmt | currency:'EUR':true:'1.2-2'}} </div>
+             </div>
+
+             <div class="risksubmit_button" style="background: none !important;text-align:center;">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+        </div>
+        </form>
+        
+    </ng-template>
+    

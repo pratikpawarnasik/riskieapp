@@ -1,0 +1,217 @@
+
+<section class="product_category">
+  <div class="container-fluid admin_whitebgcolor">
+      <div class="col-md-2 no-padd side_blacknav">
+          <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-md-10">
+          <div class="main ad_pdetail">
+              <h3 class="pull-left heading_name">Add Product</h3>
+              <button class="back_button pull-right" (click)="backClicked()"><i class="fas fa-arrow-left"></i> &nbsp;&nbsp; Back</button>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="riskieproduct_admin">
+                      <!-- <ul class="nav nav-tabs">
+                          <li><a data-toggle="tab" href="#menu1">Product</a></li>
+                          <li><a data-toggle="tab" href="#menu2">Technical Facts</a></li>
+                          <li><a data-toggle="tab" href="#menu3">Indication</a></li>
+                          <li><a data-toggle="tab" href="#menu4">Warning </a></li>
+                          <li><a data-toggle="tab" href="#menu5">Precautions</a></li>
+                          <li><a data-toggle="tab" href="#menu6">Certificates</a></li>
+                          <li><a data-toggle="tab" href="#menu7">FMEA Table</a></li>
+                        </ul> -->
+                        <!-- <button class="btn btn-outline-primary" (click)="t.select('techinical')">Selected techinical </button>
+                        <button class="btn btn-outline-primary" (click)="t.select('product')">Selected product </button> -->
+                        <ngb-tabset  #t="ngbTabset">
+                          <ngb-tab id="product" title="Product">
+                            <ng-template ngbTabContent>
+                                <h3></h3>
+                                <div class="row prod_add_admin">
+                                  <form #asdf="ngForm" (ngSubmit)="submitProductForm(asdf)" class="riskie_input">
+                                    <div class="col-md-6"><label>Product Name</label><input type="text" name="name"></div>
+                                    <div class="col-md-6"><label>Category</label><input type="Name" name="name"></div>
+                                    <div class="col-md-6"><label>Product Number</label><input type="Name" name="name"></div>
+                                    <div class="col-md-6"><label>Riskie Product Number</label><input type="Name" name="name"></div>
+                                    <div class="col-md-6"><label>Serial Number/ Modal Number</label><input type="Name" name="name"></div>
+                                    <div class="col-md-6"><label>Lot Number</label><input type="Name" name="name"></div>
+                                    <div class="col-md-6"><label>Risk Class</label><input type="Name" name="name"></div>
+                                    <div class="col-md-6"><label>Date</label><input type="Name" name="name"></div>
+                                    <button class="btn btn-primary risksubmit_button" [disabled]="asdf.invalid">SAVE & NEXT</button>
+                                  </form>
+                                </div>
+                            </ng-template>
+                          </ngb-tab>
+                          <ngb-tab id="techinical">
+                            <ng-template ngbTabTitle><b>Technical</b> Facts</ng-template>
+                            <ng-template ngbTabContent>
+                                <h3></h3>
+                                <div class="row ">
+                                  <form #productForm="ngForm" (ngSubmit)="submitProductForm(productForm)" class="">
+                                    <!-- Product name -->
+                                    <div class="col-md-6">  
+                                      <div class="">
+                                          <mat-form-field>
+                                              <input matInput placeholder="Product Name" type="text" 
+                                              required 
+                                              [(ngModel)]="addProduct.productName"
+                                              name="productName"
+                                              #productName="ngModel" 
+                                              id="productName" 
+                                              minlength="3"
+                                              maxlength="100">
+                                            </mat-form-field>
+                                      </div>
+                                      <div class="alert alert-danger"  *ngIf="productName.touched && !productName.valid">
+                                          <div *ngIf="productName.errors.required">
+                                              Full name is required.
+                                          </div>
+                                          <div *ngIf="productName.errors.minlength">
+                                              Full name length is minimum 3 characters.
+                                          </div>
+                                      </div>
+                                    </div>
+                                    <!-- Category name -->
+                                    <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label>Category</label>
+                                        <input  
+                                        type="text" 
+                                        required 
+                                        [(ngModel)]="addProduct.categoryName"
+                                        name="categoryName"
+                                        #categoryName="ngModel" 
+                                        id="categoryName" 
+                                        class="form-control"
+                                        minlength="3"
+                                        maxlength="100"
+                                        (change)="log(categoryName)"
+                                        >
+                                      </div>
+                                      <div class="alert alert-danger"  *ngIf="categoryName.touched && !categoryName.valid">
+                                          <div *ngIf="categoryName.errors.required">
+                                              Full name is required.
+                                          </div>
+                                          <div *ngIf="categoryName.errors.minlength">
+                                              Full name length is minimum 3 characters.
+                                          </div>
+                                      </div>
+                                    </div>
+                                    <mat-form-field>
+                                        <mat-select placeholder="State">
+                                          <mat-option>None</mat-option>
+                                          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                     <!-- Product Number -->
+                                     <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label>Product Number</label>
+                                        <input  
+                                        type="text" 
+                                        required 
+                                        [(ngModel)]="addProduct.categoryName"
+                                        name="categoryName"
+                                        #categoryName="ngModel" 
+                                        id="categoryName" 
+                                        class="form-control"
+                                        minlength="3"
+                                        maxlength="100"
+                                        (change)="log(categoryName)"
+                                        >
+                                      </div>
+                                      <div class="alert alert-danger"  *ngIf="categoryName.touched && !categoryName.valid">
+                                          <div *ngIf="categoryName.errors.required">
+                                              Full name is required.
+                                          </div>
+                                          <div *ngIf="categoryName.errors.minlength">
+                                              Full name length is minimum 3 characters.
+                                          </div>
+                                      </div>
+                                    </div>
+                                    
+                                    
+                                    <button class="btn btn-primary risksubmit_button" [disabled]="productForm.invalid">SAVE</button>
+                                  </form>
+                                </div>
+                            </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle><b>Indication</b> </ng-template>
+                            <ng-template ngbTabContent>
+                              <h1>Tab Indication</h1>
+                            </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle><b>Warning</b></ng-template>
+                            <ng-template ngbTabContent>
+                              <h1>Tab Warning</h1>
+                            </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle><b>Precautions</b> </ng-template>
+                            <ng-template ngbTabContent>
+                              <h1>Tab Precautions</h1>
+                            </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle><b>Certificates</b></ng-template>
+                            <ng-template ngbTabContent>
+                              <h1>Tab Certificates</h1>
+                            </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle><b>FMEA</b> Table</ng-template>
+                            <ng-template ngbTabContent>
+                              <h1>Tab FMEA</h1>
+                            </ng-template>
+                          </ngb-tab>
+                        </ngb-tabset>
+                        <!-- <div class="tab-content">
+                          <div id="menu1" class="tab-pane fade in active">
+                            <h3></h3>
+                            <div class="row prod_add_admin">
+                              <form #productForm="ngForm" (ngSubmit)="submitProductForm(productForm)" class="riskie_input">
+                                <div class="col-md-6"><label>Product Name</label><input type="text" name="name"></div>
+                                <div class="col-md-6"><label>Category</label><input type="Name" name="name"></div>
+                                <div class="col-md-6"><label>Product Number</label><input type="Name" name="name"></div>
+                                <div class="col-md-6"><label>Riskie Product Number</label><input type="Name" name="name"></div>
+                                <div class="col-md-6"><label>Serial Number/ Modal Number</label><input type="Name" name="name"></div>
+                                <div class="col-md-6"><label>Lot Number</label><input type="Name" name="name"></div>
+                                <div class="col-md-6"><label>Risk Class</label><input type="Name" name="name"></div>
+                                <div class="col-md-6"><label>Date</label><input type="Name" name="name"></div>
+                                <button class="btn btn-primary risksubmit_button" [disabled]="productForm.invalid">SAVE & NEXT</button>
+                              </form>
+                            </div>
+                          </div>
+                          <div id="menu2" class="tab-pane fade">
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                          </div>
+                          <div id="menu3" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                          </div>
+                          <div id="menu4" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                          </div>
+                          <div id="menu5" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                          </div>
+                          <div id="menu6" class="tab-pane fade">
+                            <h3>Menu 3</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                          </div>
+                          <div id="menu7" class="tab-pane fade">
+                            <h3>Menu 7</h3>
+                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                          </div>
+                        </div> -->
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>            
+</section>

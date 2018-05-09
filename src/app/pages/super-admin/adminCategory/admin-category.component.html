@@ -1,0 +1,67 @@
+
+<section class="product_category">
+    <div class="container-fluid admin_whitebgcolor">
+        <div class="col-md-2 no-padd side_blacknav">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-md-10">
+            <div class="main ad_pdetail">
+                    <h3 class="pull-left heading_name">Category</h3>
+                
+                <button class="back_button pull-right" (click)="backClicked()"><i class="fas fa-arrow-left"></i> &nbsp;&nbsp; Back</button>
+                <button class="add_cat_button pull-right"><a routerLink="/add-category"><i class="fas fa-plus"></i>&nbsp; Add Category</a></button>
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="riskieproduct_admin">
+                      </div>
+                      <div class="example-container mat-elevation-z8">
+                            <div class="example-header">
+                                <mat-form-field>
+                                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Category name">
+                                </mat-form-field>
+                            </div>
+                            <mat-table #table [dataSource]="categoryList" matSort matSortActive="id" matSortDirection="asc">
+                                <ng-container matColumnDef="id">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID.</mat-header-cell>
+                                    <mat-cell *matCellDef="let ctgry">{{ctgry.id}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="catname">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+                                    <mat-cell *matCellDef="let ctgry">{{ctgry.catname}}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="totalProd">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Total Product</mat-header-cell>
+                                    <mat-cell *matCellDef="let ctgry">{{ctgry.productcnt}}</mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns:displayedColumns"></mat-row>
+                            
+                            </mat-table>
+                          <mat-paginator #paginator
+                            [pageSize]="10"
+                            [pageSizeOptions]="[5, 10, 20]"
+                            [showFirstLastButtons]="true">
+                        </mat-paginator>
+                        <!-- <table>
+                          <tbody>
+                          <tr>
+                              <th>Sr.No</th>
+                              <th>Category Name</th>
+                              <th>Added Date</th>
+                              <th>Action</th>
+                          </tr>
+                          <tr>
+                              <td>1</td>
+                              <td>abc</td>
+                              <td>5-15-18</td>
+                              <td>Edit / Delete</td>
+                          </tr>
+                          </tbody>
+                        </table> -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>            
+  </section>

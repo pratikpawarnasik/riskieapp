@@ -10,15 +10,16 @@ import { CookieService } from 'ngx-cookie-service';
 })
 
 export class AppComponent implements OnInit {
-  headerStatus = false;
+ // headerStatus = false;
   constructor(private cookieService: CookieService) {}
-  cookieValue = this.cookieService.get('userId');
+ // cookieValue = this.cookieService.get('userId');
   ngOnInit() {
-    if (this.cookieValue > '0') {
-      this.headerStatus = true;
-  } else {
-    this.headerStatus = false;
-  }
+    // if (this.cookieValue > '0') {
+    //   this.headerStatus = true;
+    // } else {
+    //   this.headerStatus = false;
+    // }
+  // console.log(window.location.origin);
   }
 }
 

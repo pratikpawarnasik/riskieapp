@@ -1,0 +1,85 @@
+.sucess_popup{
+    background: #fff;
+    width: 50%;
+    height: 450px;
+    margin: 0px auto;
+    position: relative;
+    top: 100px;
+    box-shadow: 1px 0px 6px 1px #313131;
+    text-align: center;
+    padding-top: 75px;
+}
+.green_check{
+       position: absolute;
+    top: -32px;
+    left: 45%;
+    font-size: 50px;
+    color: #23af70;
+    background: #fff;
+    border-radius: 50px;
+    padding: 11px;
+    border: 2px solid #23af70;
+}
+button.success_button {
+    width: 30%;
+    height: 50px;
+    background: #23af70;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    box-shadow: 1px 2px 1px #ccc;
+    margin-top: 40px;
+}
+.error_popup{
+    background: #fff;
+    width: 50%;
+    height: 450px;
+    margin: 0px auto;
+    position: relative;
+    top: 100px;
+    box-shadow: 1px 0px 6px 1px #313131;
+    text-align: center;
+    padding-top: 75px;
+}
+.red_check{
+       position: absolute;
+    top: -32px;
+    left: 45%;
+    font-size: 50px;
+    color: #cf001c;
+    background: #fff;
+    border-radius: 50px;
+    padding: 11px;
+    border: 2px solid #cf001c;
+}
+button.error_button {
+    width: 30%;
+    height: 50px;
+    background: #cf001c;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    box-shadow: 1px 2px 1px #ccc;
+    margin-top: 40px;
+}
+button.cancel_button {
+    width: 30%;
+    height: 50px;
+    background: #ff5904c7;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    box-shadow: 1px 2px 1px #ccc;
+    margin-top: 40px;
+}
+.orange_check{
+    position: absolute;
+ top: -32px;
+ left: 45%;
+ font-size: 50px;
+ color: #ff6600;
+ background: #fff;
+ border-radius: 50px;
+ padding: 11px;
+ border: 2px solid #ff6600;
+}

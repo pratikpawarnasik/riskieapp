@@ -4,7 +4,9 @@ import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import {Location} from '@angular/common';
-import { UserApiService } from '../user.api';
+import { UserApiService } from '../../../config-pages/user.api.service';
+import { AppGlobals } from '../../../config-pages/app.global';
+
 // Component data
 @Component({
   selector: 'app-product-detail',
@@ -12,8 +14,8 @@ import { UserApiService } from '../user.api';
 })
 // Product Search Componenet Class
 export class ProductDetailComponent implements OnInit {
-    userId = this.cookieService.get('userId');
-    userName = this.cookieService.get('userName');
+   // userId = this.cookieService.get('userId');
+   // userName = this.cookieService.get('userName');
     getProductDetail: any;
     productList: any;
     productFMEA = [];
@@ -24,10 +26,11 @@ export class ProductDetailComponent implements OnInit {
               private cookieService: CookieService,
               private userSerivce: UserApiService,
               private route: ActivatedRoute,
-              private _location: Location ) {} // Constructor end here
+              private _location: Location,
+              private _global: AppGlobals ) {} // Constructor end here
 
   ngOnInit() {
-    if (this.userId < '0' &&  this.userId === '') {
+    if (this._global.g_userId < '0' &&  this._global.g_userId === '') {
       this.router.navigate(['home']);
     }
 
@@ -36,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
     });
 
     // Product Detail API
-    this.userSerivce.url_getProductDetailAPI(this.userId, this.productId)
+    this.userSerivce.url_getProductDetailAPI(this.productId)
    // .map(response => response.json())
     .subscribe(
       response => {this.getProductDetail = response;
@@ -46,6 +49,7 @@ export class ProductDetailComponent implements OnInit {
           console.log(this.getProductDetail);
         } else {
           alert(this.getProductDetail.message);
+          this._location.back();
         }
       },
       error => console.log('Error :: ' + error ));

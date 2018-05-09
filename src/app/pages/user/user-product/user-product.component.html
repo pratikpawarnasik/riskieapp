@@ -1,3 +1,5 @@
+<app-master-header></app-master-header>
+<app-master-header></app-master-header>
 <section class="category cust_margin">
     <div class="container-fluid">
         <div class="row">
@@ -15,7 +17,7 @@
                 <div class="col-md-12 white_box" *ngFor="let product of productList">
                     <div class="cat_box">
                         <div class="col-md-2 border_line">
-                            <img src="../assets/images/product_detail_03.jpg" height="200px" width="150px">
+                            <img src="assets/images/product_detail_03.jpg" class="img-responsive">
                         </div>
                         <div class="col-md-10 cat_box1">
                             <h4>{{product.productname}}</h4>
@@ -27,7 +29,7 @@
                                 <li>{{product.riskclass}}</li>
                             </ul>
                             <p>Lorem Ipsum is simply dummy text of the printing and ypesetting industry.ting and typesetting industry.</p>
-                            <a [routerLink]="['/product-detail', product.pid]" class="link_color">View Detail</a>
+                            <a [routerLink]="['/product-detail', product.pid]" class="link_color">View Details</a>
                         </div>
                     </div>
                 </div>

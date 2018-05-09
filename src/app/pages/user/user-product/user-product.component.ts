@@ -3,8 +3,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
-
-import { UserApiService } from '../user.api';
+import { AppGlobals } from '../../../config-pages/app.global';
+import {Location} from '@angular/common';
+import { UserApiService } from '../../../config-pages/user.api.service';
 // Component data
 @Component({
   selector: 'app-user-product',
@@ -12,20 +13,22 @@ import { UserApiService } from '../user.api';
 })
 // Product Search Componenet Class
 export class UserProductComponent implements OnInit {
-    userId = this.cookieService.get('userId');
-    userName = this.cookieService.get('userName');
+   // userId = this.cookieService.get('userId');
+   // userName = this.cookieService.get('userName');
     getproductList: any;
-    productList = {};
+    productList: any;
     private sub: any;
     categoryId: number;
 
   constructor(private router: Router,
               private cookieService: CookieService,
               private userSerivce: UserApiService,
-              private route: ActivatedRoute ) {} // Constructor end here
+              private route: ActivatedRoute,
+              private _location: Location,
+              private _global: AppGlobals ) {} // Constructor end here
 
   ngOnInit() {
-    if (this.userId < '0' &&  this.userId === '') {
+    if (this._global.g_userId < '0' &&  this._global.g_userId === '') {
       this.router.navigate(['home']);
     }
 
@@ -35,7 +38,7 @@ export class UserProductComponent implements OnInit {
 
 
     // Login API
-    this.userSerivce.url_getProductByCategoryAPI(this.userId, this.categoryId)
+    this.userSerivce.url_getProductByCategoryAPI(this.categoryId)
    // .map(response => response.json())
     .subscribe(
       response => {this.getproductList = response;
@@ -44,6 +47,7 @@ export class UserProductComponent implements OnInit {
           console.log(this.productList);
         } else {
           alert(this.getproductList.message);
+          this._location.back();
         }
       },
       error => console.log('Error :: ' + error ));

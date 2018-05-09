@@ -1,0 +1,46 @@
+
+<section class="product_category" *ngIf="statusid == 1">
+    <div class="container-fluid">
+        <div class="error_popup">
+            <i class="fas fa-times-circle red_check"></i>
+            <h2>Failed!</h2>
+            <p>Payment failed due to any error.</p>
+            <a routerLink="/plans"><button class="error_button">Try Again</button></a>
+        </div>
+        
+    </div>            
+</section>
+
+<section class="product_category"  *ngIf="statusid == 2">
+    <div class="container-fluid">
+        <div class="sucess_popup">
+            <i class="fas fa-check-circle green_check"></i>
+            <h2>Success!</h2>
+            <p>Plan uccessfully urchased.</p>
+            <p>We have email the receipt.</p>
+            <a routerLink="/welcome"><button class="success_button">Home</button></a>
+        </div>
+    </div>            
+</section>
+
+<section class="product_category"  *ngIf="statusid == 3">
+    <div class="container-fluid">
+        <div class="sucess_popup">
+            <i class="fas fa-times-circle orange_check"></i>
+            <h2>Canceled!</h2>
+            <p>Payment failed due to any reason.</p>
+            <a routerLink="/welcome"><button class="cancel_button">Home</button></a>
+        </div>
+    </div>            
+</section>
+<section class="product_category"  *ngIf="statusid !== 3 && 2 && 1">
+    <div class="container-fluid">
+        <div class="sucess_popup">
+            <i class="fas fa-times-circle orange_check"></i>
+            <h2>You have wrong input!</h2>
+            <p></p>
+            <p></p>
+            <a routerLink="/welcome"><button class="cancel_button">Home</button></a>
+        </div>
+    </div>            
+</section>

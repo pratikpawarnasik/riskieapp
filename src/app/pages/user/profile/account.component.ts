@@ -3,8 +3,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes, Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpParams, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
-import { UserApiService } from '../user.api';
+import { UserApiService } from '../../../config-pages/user.api.service';
 import { NgForOf } from '@angular/common';
+import { AppGlobals } from '../../../config-pages/app.global';
+// import { GetAccountDetail } from '../../../config-pages/riskie-all-interface';
+
 // Component data
 @Component({
   selector: 'app-account',
@@ -13,20 +16,19 @@ import { NgForOf } from '@angular/common';
 
 // Product Search Componenet Class
 export class AccountComponent implements OnInit {
-  _userId = this.cookieService.get('userId');
-  _userName = this.cookieService.get('userName');
   getAccountDetail: any;
-  accountDetail =  [];
+  accountDetail = [];
   currentPlan: any;
   element: any;
-  constructor(private router: Router, private cookieService: CookieService, private userSerivce: UserApiService ) {} // Constructor end here
+  constructor(private router: Router, private cookieService: CookieService, private userSerivce: UserApiService, private _global: AppGlobals ) {} // Constructor end here
 
   ngOnInit() {
-    if (this._userId < '0' &&  this._userId === '') {
+
+    if (this._global.g_userId < '0' &&  this._global.g_userId === '') {
       this.router.navigate(['home']);
     }
     // Login API
-    this.userSerivce.url_getAccountDetailAPI(this._userId)
+    this.userSerivce.url_getAccountDetailAPI(this._global.g_userId)
    // .map(response => response.json())
     .subscribe(
       response => {this.getAccountDetail = response;
@@ -44,6 +46,7 @@ export class AccountComponent implements OnInit {
       error => console.log('Error :: ' + error ));
 
   }
+
 
 
 } // Product Search Componenet Class end here

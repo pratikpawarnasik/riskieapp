@@ -8,11 +8,12 @@ import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/of';
 
 import { CookieService } from 'ngx-cookie-service';
-import { ApiService } from '../api.service';
+import { ApiService } from '../config-pages/header-api.service';
 import { TestinServiceData, UserRegistration, UserLogin } from '../config-pages/riskie-all-interface';
 
 import { RouterModule, Routes, Router } from '@angular/router';
 import { UserService } from '../config-pages/user.service';
+import { AppGlobals } from '../config-pages/app.global';
 
   // unamePattern = "^[a-z0-9_-]{8,15}$";
   // pwdPattern = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$";
@@ -37,12 +38,14 @@ export class HeaderComponent implements OnInit {
   posts: any;
   loginResponse: any;
   regResponse: any;
+  userId = this._global.g_userId;
   constructor(private modalService: NgbModal,
               private http: HttpClient,
               private apiSerivce: ApiService,
               private cookieService: CookieService,
               private router: Router,
-              private user: UserService) {}
+              private user: UserService,
+              private _global: AppGlobals) {}
 
   getPosts(): void {
     this.apiSerivce.url_getPosts().
@@ -61,7 +64,7 @@ export class HeaderComponent implements OnInit {
       emailAddress: '',
       password: ''
     };
-     this.getPosts();
+    // this.getPosts();
   }
   // Open Registration form modal
   openRegForm(registration: any) {
@@ -96,7 +99,13 @@ export class HeaderComponent implements OnInit {
                 this.cookieService.set( 'isAdmin', this.loginResponse.isadmin );
                 this.cookieService.set( 'userName', this.loginResponse.name );
                 this.cookieService.set( 'profilePic', this.loginResponse.image );
-                // this.router.navigate(['welcome']);
+                if (this.modalReferenceReg) {
+                  this.modalReferenceReg.close();
+                }
+                if (this.modalReferenceLogin) {
+                  this.modalReferenceLogin.close();
+                }
+                this.router.navigate(['welcome']);
                 window.location.reload();
               } else {
                 alert(this.loginResponse.message);

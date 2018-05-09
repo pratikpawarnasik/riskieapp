@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { AppGlobals } from '../../../config-pages/app.global';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,13 +9,16 @@ import { RouterModule, Routes, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private cookieService: CookieService) {}
-  cookieValue = this.cookieService.get('userId');
+  constructor(private router: Router, private cookieService: CookieService, private _global: AppGlobals) {}
+
+
   ngOnInit() {
-    if (this.cookieValue > '0') {
-      this.router.navigate(['welcome']);
-  }
+
+    // if (this._global.g_userId > '0' &&  this._global.g_userId !== '') {
+    //   this.router.navigate(['welcome']);
+    // }
   }
 
-}
+} // Welcome Componenet Class end here
+
 

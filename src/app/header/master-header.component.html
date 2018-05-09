@@ -9,51 +9,53 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" routerLink="/welcome">
-          <img src="../assets/images/white_logo.png">
+          <img src="assets/images/white_logo.png">
         </a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a routerLink="/search-product">Product</a></li>
           <li><a routerLink="/search-product">Tools</a></li>
-          <li><a routerLink="/aboutus">Projects</a></li>
-          <li><a routerLink="/aboutus">Library</a></li>
+          <li><a routerLink="/search-product">Projects</a></li>
+          <li><a routerLink="/search-product">Library</a></li>
           <li class="hidden-md hidden-lg"><button class="cust_btn orange_btn upgrade">UPGRADE</button></li>
           <!-- <li class="hidden-md hidden-lg">
             <a class="user_login" routerLink="#">
               <span class="user_type">Free User</span>
-              <span class="user_pro_img"><img src="../assets/images/user_profile.png"></span>
+              <span class="user_pro_img"><img src="assets/images/user_profile.png"></span>
               <span class="user_name">Smith Jhon</span> 
             </a>
           </li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm header_right_nav">
-          <li><button class="cust_btn orange_btn upgrade">UPGRADE</button></li>
+          <li><button class="cust_btn orange_btn upgrade"><a routerLink="/plans">UPGRADE</a></button></li>
           <!-- <li><span class="user_type">Free User</span></li> -->
           <li>
             <a class="dropdown-toggle" data-toggle="dropdown">
                 <span class="user_type">Free User</span>
-              <span class="user_pro_img"><img [src]="profileFullPath"></span>
+              <span class="user_pro_img"><img [src]="profileFullPath" height="50" width="50"></span>
               <span class="user_name">{{userName}}</span> 
             </a>
 
             <div class="dropdown-menu logout_popover">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 border_bottom">
-                        <p><a routerLink="/profile" class="link_color">{{userName}}</a></p>
-                        <a routerLink="/profile" class="link_color">My Account</a>
+                        <p>{{userName}}</p>
+                        <p><a routerLink="/account" class="link_color">My Account</a></p>
                     </div>
                     <div class="col-md-12 col-lg-12 border_bottom">
                         <p><strong>Subscription</strong></p>
-                        <p>Free Member</p>  
-                        <p>Try other edition</p>
+                        <p><a routerLink="/search-product">Free Member</a></p>
+                        <p><a routerLink="/plans">Try Other Editions</a></p>
+                        <p><a routerLink="/admin-product">Super Access</a></p>
+                       
                     </div>
                     <div class="col-md-12 col-lg-12 border_bottom">
-                      <p><a class="">Change Password</a></p>
+                      <p><a routerLink="/profile">Change Password</a></p>
                       
                     </div>
                     <div class="col-md-12">
-                        <p><a class="link_color" (click)="logoutBtn()">Logout</a></p>
+                        <p><a class="" (click)="logoutBtn()">Logout</a></p>
                     </div>
                 </div>                               
             </div>

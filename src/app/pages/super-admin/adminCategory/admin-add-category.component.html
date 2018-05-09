@@ -1,0 +1,64 @@
+
+<section class="product_category">
+        <div class="container-fluid admin_whitebgcolor">
+            <div class="col-md-2 no-padd side_blacknav">
+                <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-md-10">
+                <div class="main ad_pdetail">
+                        <h3 class="pull-left heading_name">Add New Category</h3>
+                        <button class="back_button pull-right" (click)="backClicked()"><i class="fas fa-arrow-left"></i> &nbsp;&nbsp; Back</button>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="riskieproduct_admin">
+                
+                            
+                            <div class="row prod_add_admin">
+                            <form #categoryForm="ngForm" (ngSubmit)="submitAddCatForm(categoryForm)" class="riskie_input">
+                                <!-- Category name -->
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Category Name</label>
+                                    <input  
+                                    type="text" 
+                                    required 
+                                    [(ngModel)]="masterCategory.categoryName"
+                                    name="categoryName"
+                                    #categoryName="ngModel" 
+                                    id="categoryName" 
+                                    class="form-control"
+                                    minlength="3"
+                                    maxlength="100"
+                                   
+                                    >
+                                </div>
+                                <div class="alert alert-danger"  *ngIf="categoryName.touched && !categoryName.valid">
+                                    <div *ngIf="categoryName.errors.required">
+                                            Category name is required.
+                                    </div>
+                                    <div *ngIf="categoryName.errors.minlength">
+                                            Category name length is minimum 3 characters.
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- Product Number -->
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Category Image</label>
+                                    <input type="file" required  #categoryPic accept="image/*" id="categoryPic" (change)="uploadImg($event.target.files)">
+                                </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>{{responseMessage}}</div>
+                                    <button class="add_cat_button" [disabled]="categoryForm.invalid">   SAVE CATEGORY   </button>
+                                    
+                                </div>
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            
+      </section>
